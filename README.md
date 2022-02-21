@@ -2,6 +2,7 @@
  Google Apps Script for zebrafish labs to log larvae and track their feeding
 
 ##Installation
+
 - Go to Google Sheets: https://sheets.google.com/
 - Start a new blank spreadsheet.
 - Go to Extensions > Apps Script
@@ -26,6 +27,7 @@ corner, then 'Go to Untitled project (unsafe)'.
 - The spreadsheet is now ready to use. You can close the Apps Script window.
 
 ##Structure
+
 This script creates a spreadsheet named **_Larval Zebrafish Log_** that is used for logging
 larvae from different crosses and tracking their feeding.
 
