@@ -3,13 +3,18 @@ function newSheet(){
   // The 'Current larvae' sheet is used to keep track of live fish, and the 'Past larvae' sheet is used to track euthanized fish
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   ss.rename('Larval Zebrafish Log');
+
   ss.getSheetByName('Sheet1').setName('Current larvae');
-  ss.insertSheet('Past larvae');
   var sheet = ss.getSheetByName('Current larvae');
   addHeader(sheet);
-  setCondFormatting(sheet);
+  var tableRange = sheet.getRange(2, 1,sheet.getMaxRows()-1, sheet.getLastColumn()); // range for the end of the sheet
+  setCondFormatting(sheet, tableRange);
+  tableRange.setHorizontalAlignment('center');
+
+  ss.insertSheet('Past larvae');
   var sheet = ss.getSheetByName('Past larvae');
   addHeader(sheet);
+  tableRange.setHorizontalAlignment('center');
 }
 
 function addHeader(sheet){
@@ -27,10 +32,8 @@ function addHeader(sheet){
   sheet.setFrozenRows(1);
 }
 
-function setCondFormatting(sheet){
+function setCondFormatting(sheet, range){
   // Sets the conditional formatting rules for the 'Current larvae' sheet
-
-  var range = sheet.getRange(2, 1,sheet.getMaxRows()-1, sheet.getLastColumn()); // range for the end of the sheet
 
   // If the fish are 3 dpf or younger, sets the background to light blue
   // This is to mark larvae that have not reached the feeding age and need to be cleaned
